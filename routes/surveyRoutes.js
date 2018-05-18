@@ -75,7 +75,7 @@ module.exports = app => {
       body,
       recipients: recipients.split(',').map(e => ({ email: e.trim() })),
       _user: req.user.id,
-      dateSenty: Date.now()
+      dateSent: Date.now()
     });
 
     const mailer = new Mailer(survey, surveyTemplate(survey));
