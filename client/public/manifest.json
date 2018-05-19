@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Email.io",
+  "name": "Create surveys and send them out!",
   "icons": [
     {
       "src": "favicon.ico",

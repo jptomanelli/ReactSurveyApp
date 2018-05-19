@@ -1,0 +1,25 @@
+
+div.container {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+a.sidenav-trigger {
+  cursor: pointer;
+}
+
+.displayNone {
+  display: none;
+}
+
+.email-brand-logo {
+  margin-left: 3px; 
+}
+
+.nav-bar {
+  width: 100%;
+}
+
+body {
+  font-family: 'Nanum Gothic', sans-serif;
+}
