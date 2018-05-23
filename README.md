@@ -1,5 +1,7 @@
 # Email.io 
 
+Still in progress
+
 https://tranquil-reef-40473.herokuapp.com
 
 Simple React Application where you use your Google account to login, buy credits through stripe and create bulk surveys to send out.
