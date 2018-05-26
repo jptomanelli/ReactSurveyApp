@@ -1,8 +1,8 @@
 # Email.io 
 
-Still in progress
+Still in progress - https://tranquil-reef-40473.herokuapp.com
 
-https://tranquil-reef-40473.herokuapp.com
+Trello - https://trello.com/b/0I1QSYpO/emailio
 
 Simple React Application where you use your Google account to login, buy credits through stripe and create bulk surveys to send out.
 
