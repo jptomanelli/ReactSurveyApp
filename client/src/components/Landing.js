@@ -1,12 +1,15 @@
 import React from 'react';
+import Typography from '@material-ui/core/Typography';
 
 const Landing = () => {
   return (
     <div className="container" style={{ textAlign: 'center' }}>
-      <h1>
+      <Typography variant="display4" color="inherit">
         Email.io
-      </h1>
-      Collect feedback from users
+      </Typography>
+      <Typography variant="title" color="inherit">
+        Collect feedback from users
+      </Typography>
     </div>
   )
 };

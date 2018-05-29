@@ -1,18 +1,35 @@
-import React from 'react';
-import { Link } from 'react-router-dom'; 
-import SurveyList from './surveys/SurveyList'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import SurveyList from './surveys/SurveyList';
+import Button from '@material-ui/core/Button';
+import AddIcon from '@material-ui/icons/Add';
+import { withStyles } from '@material-ui/core/styles';
 
-const Dashboard = () => {
-  return (
-    <div className="container">
-      <SurveyList />
-    <div className="fixed-action-btn">
-      <Link to="/surveys/new" className="hoverable pulse btn-floating btn-medium red">
-        <i className="material-icons">add</i>
-      </Link>
-    </div>
-    </div>
-  );
+
+const styles = theme => ({
+  circleButton: {
+    position: 'fixed',
+    bottom: theme.spacing.unit * 2,
+    right: theme.spacing.unit * 2,
+  },
+});
+
+class Dashboard extends Component {
+  render() {
+
+    const { classes, theme } = this.props; 
+
+    return (
+      <div className="container">
+        <SurveyList />
+        <div className="fixed-action-btn">
+          <Button component={Link} to="/surveys/new" variant="fab" color="primary" aria-label="add" className={classes.circleButton}>
+            <AddIcon />
+          </Button>
+        </div>
+      </div>
+    );
+  }
 };
 
-export default Dashboard;
+export default withStyles(styles, { withTheme: true })(Dashboard);
