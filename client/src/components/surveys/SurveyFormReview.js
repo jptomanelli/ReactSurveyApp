@@ -5,7 +5,16 @@ import formFields from './formFields';
 import { withRouter } from "react-router-dom";
 import * as actions from '../../actions';
 
-const SurveyFormReview = ({ onCancel, formValues, submitSurvey, history }) => {
+import Button from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
+  button: {
+    margin: theme.spacing.unit,
+  },
+});
+
+const SurveyFormReview = ({ onCancel, formValues, submitSurvey, history, classes }) => {
 
   const reviewFields = _.map(formFields, ({ name, label }) => {
     return (
@@ -20,17 +29,20 @@ const SurveyFormReview = ({ onCancel, formValues, submitSurvey, history }) => {
     <div className="container">
       <h5>Please confirm your entries</h5>
         {reviewFields}
-      <button 
-        className="yellow white-text darken-3 btn-flat"
+      <Button 
+        variant="raised"
+        color="secondary"
+        className={classes.button}
         onClick={onCancel}>
         Back
-      </button>
-      <button 
-        className="green white-text right btn-flat"
+      </Button>
+      <Button 
+        variant="raised"
+        color="primary"
+        className={classes.button}
         onClick={() => submitSurvey(formValues, history)}>
           Send Survey
-          <i className="material-icons right">email</i>
-      </button>
+      </Button>
     </div>
   );
 };
@@ -39,4 +51,8 @@ function mapStateToProps(state) {
   return { formValues: state.form.surveyForm.values };
 }
 
-export default connect(mapStateToProps, actions)(withRouter(SurveyFormReview));
+export default connect(mapStateToProps, actions)(
+  withRouter(
+    withStyles(styles)(SurveyFormReview)
+  )
+);

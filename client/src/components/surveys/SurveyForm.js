@@ -6,6 +6,15 @@ import { Link } from 'react-router-dom';
 import validateEmails from '../../utils/validateEmails';
 import formFields from './formFields';
 
+import Button from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
+
+
+const styles = theme => ({
+  button: {
+    margin: theme.spacing.unit,
+  },
+});
 
 class SurveyForm extends Component {
 
@@ -16,17 +25,19 @@ class SurveyForm extends Component {
   }
 
   render() {
+
+    const { classes } = this.props;
+
     return (
       <div className="container">
         <form onSubmit={this.props.handleSubmit(this.props.onSurveySubmit)}>
           {this.renderFields()}
-          <Link to="/surveys" className="red btn-flat white-text">
+          <Button variant="raised" color="secondary" component={Link} to="/surveys" className={classes.button}>
             Cancel
-          </Link>
-          <button type="submit" className="teal btn-flat right white-text">
+          </Button>
+          <Button variant="raised" color="primary" type="submit" className={classes.button}>
             Next
-            <i className="material-icons right">done</i>
-          </button>
+          </Button>
         </form>
       </div>
     );
@@ -51,4 +62,6 @@ export default reduxForm({
   validate,
   form: 'surveyForm',
   destroyOnUnmount: false
-})(SurveyForm);
+}) (
+  withStyles(styles)(SurveyForm)
+);
