@@ -38,6 +38,8 @@ You will then need to edit dev.js filling in all your local environment variable
 Go into sendgrid webhook and change the line ```lt -s gnfdduwvjdla3332 --port 8080
 ``` to ```lt -s [RandomString] --port 8080```
 
+You should also make this change on your sendgrid account
+
 Then Run
 ```
 npm run dev
