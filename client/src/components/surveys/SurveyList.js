@@ -2,6 +2,29 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchSurveys } from '../../actions';
 
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = {
+  card: {
+    minWidth: 275,
+  },
+  bullet: {
+    display: 'inline-block',
+    margin: '0 2px',
+    transform: 'scale(0.8)',
+  },
+  title: {
+    marginBottom: 16,
+    fontSize: 14,
+  },
+  pos: {
+    marginBottom: 12,
+  },
+};
+
 class SurveyList extends Component {
 
   componentDidMount() {
@@ -11,17 +34,14 @@ class SurveyList extends Component {
   renderSurveys() {
     return this.props.surveys.reverse().map(survey => {
       return (
-        <div className="card darken-1" key={survey._id}>
-          <div className="card-content">
-            <span className="card-title">{survey.title}</span>
-            <p>{survey.body}</p>
-            <p className="right">Sent On: {new Date(survey.dateSent).toLocaleDateString()}</p>
-          </div>
-          <div className="card-action" >
-            <a>Yes: {survey.yes}</a>
-            <a>No: {survey.no}</a>
-          </div>
-        </div>
+        <Card key={survey.id}>
+          <CardContent>
+            <Typography variant="headline">{survey.title}</Typography>
+            <Typography variant="subheadline">{survey.body}</Typography>
+            <Typography>Sent On: {new Date(survey.dateSent).toLocaleDateString()}</Typography>
+            <Typography>Yes: {survey.yes} No: {survey.no}</Typography>
+          </CardContent>
+        </Card>
       );
     });
   }
@@ -39,4 +59,6 @@ function mapStateToProps({ surveys }) {
   return { surveys };
 }
 
-export default connect(mapStateToProps, { fetchSurveys })(SurveyList);
+export default connect(mapStateToProps, { fetchSurveys })(
+  withStyles(styles)(SurveyList)
+);
