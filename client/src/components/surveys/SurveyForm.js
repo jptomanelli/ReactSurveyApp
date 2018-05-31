@@ -9,6 +9,7 @@ import formFields from './formFields';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
 
@@ -38,10 +39,11 @@ class SurveyForm extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div className="container" className={classes.root}>
+      <div className={classes.root}>
         <Grid container>
           <Grid item xs={12}>
             <Paper className={classes.paper}>
+              <Typography variant="title" color="inherit">Create a Yes/No Survey</Typography>
               <form onSubmit={this.props.handleSubmit(this.props.onSurveySubmit)}>
                 {this.renderFields()}
                 <Button variant="raised" color="secondary" component={Link} to="/surveys" className={classes.button}>
