@@ -7,7 +7,9 @@ import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
 const styles = {
   root: {
     flexGrow: 1,
@@ -15,6 +17,7 @@ const styles = {
   },
   flex: {
     flex: 1,
+    textDecoration: 'none',
   },
   menuButton: {
     marginLeft: -12,
@@ -28,19 +31,21 @@ class Header extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <nav className={classes.root}>
-        <AppBar position="static" color="default">
-          <Toolbar>
-            <Typography className={classes.flex} variant="title" color="inherit">
-              <Link className="black-text" to={this.props.auth ? '/surveys' : '/'}>
-                Email.io
-              </Link>
-            </Typography>
-            <HeaderMenu className={classes.menuButton}>
-            </HeaderMenu>
-          </Toolbar>
-        </AppBar>
-      </nav>
+      <div className={classes.root}>
+      <AppBar position="static" color="primary">
+        <Toolbar>
+          <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+            <HeaderMenu />
+          </IconButton>
+          <Typography component={Link} to={this.props.auth ? '/surveys' : '/'} variant="title" color="inherit" className={classes.flex}>
+            Email.io
+          </Typography>
+          {/*<Button color="inherit">Login</Button>*/}
+        </Toolbar>
+        
+      </AppBar>
+        
+      </div>
     );
   }
 }

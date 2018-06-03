@@ -32,12 +32,15 @@ class SurveyList extends Component {
   }
 
   renderSurveys() {
+
+    const { classes } = this.props;
+
     return this.props.surveys.reverse().map(survey => {
       return (
         <Card key={survey.id}>
-          <CardContent>
+          <CardContent className={classes.card}>
             <Typography variant="headline">{survey.title}</Typography>
-            <Typography variant="subheadline">{survey.body}</Typography>
+            <Typography >{survey.body}</Typography>
             <Typography>Sent On: {new Date(survey.dateSent).toLocaleDateString()}</Typography>
             <Typography>Yes: {survey.yes} No: {survey.no}</Typography>
           </CardContent>

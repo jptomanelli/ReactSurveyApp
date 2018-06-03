@@ -8,6 +8,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MenuIcon from '@material-ui/icons/Menu';
 import IconButton from '@material-ui/core/IconButton';
 
+
 const styles = {
   menu: {
     float: "right",
@@ -22,6 +23,7 @@ class HeaderMenu extends Component {
       anchor: null,
       classes: props.classes
     };
+
   }
 
   handleClick = e => {
@@ -44,7 +46,7 @@ class HeaderMenu extends Component {
         return [
           <MenuItem key="1" disabled={true} onClick={this.handleClose}>Credits: {this.props.auth.credits}</MenuItem>,
           <MenuItem key="2" ><Payments/></MenuItem>,
-          <MenuItem key="3" onClick={this.handleClose}><a className="black-text" href="/api/logout" >Logout</a></MenuItem>
+          <MenuItem key="3"  onClick={this.handleClose}><a href="/api/logout">Logout</a></MenuItem>
         ];
     }
   };
@@ -81,4 +83,6 @@ function mapStateToProps({ auth }) {
   return { auth };
 }
 
-export default connect(mapStateToProps)(withStyles(styles)(HeaderMenu));
+export default connect(mapStateToProps)(
+    withStyles(styles)(HeaderMenu)
+);
